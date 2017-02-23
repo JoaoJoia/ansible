@@ -2,18 +2,20 @@
   remote_user: root
   sudo: no
   tasks:
-    - name: 1. install Apache
-      apt: name=apache2 state=present
 
-    - name: 2. install PHP module for Apache
-      apt: name=libapache2-mod-php7.0 state=present
+  - name: 1. Install Apache web server
+    yum: pkg={{ item }} state=installed
+    with_items:
+      - httpd
 
-    - name: 3. start Apache
-      service: name=apache2 state=running enabled=yes
+  - name: 2. Install php
+    yum: pkg={{ item }} state=present
+    with_items:
+      - php
 
-    - name: 4. install Hello World PHP script
-      copy: src=index.php dest=/var/www/html/index.php mode=0664
+  - name: 3. Start Apache
+    service: name=httpd state=running enabled=yes
 
-  handlers:
-    - name: Start Apache
-      service: name=apache2 state=started enabled=yes
+  - name: 4. Install Hello World PHP script
+    copy: src=index.php dest=/var/www/html/index.php mode=0664
+
