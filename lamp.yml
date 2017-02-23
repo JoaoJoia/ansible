@@ -19,3 +19,5 @@
   - name: 4. Install Hello World PHP script
     copy: src=index.php dest=/var/www/html/index.php mode=0664
 
+  - name: 5. Open HTTP port on host firewall
+    firewalld: port=80/tcp permanent=true state=enabled immediate=yes
