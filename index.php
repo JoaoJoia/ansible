@@ -1,2 +1,2 @@
 <?php
-echo '<p>CloudForms Demo pour <a href="http://www.ratp.fr/">http://www.rapt.fr/</a></p>';
+echo '<p>CloudForms Demo!<a href="http://cloudformsblog.redhat.com/">http://cloudformsblog.redhat.com/</a></p>';
